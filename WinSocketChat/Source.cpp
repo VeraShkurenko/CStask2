@@ -10,8 +10,8 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	int nChoice;
-	int port = 24242; //выбираем порт
-	string ipAddress = "127.0.0.1"; //Адрес сервера
+	int port = 24242; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	string ipAddress = "127.0.0.1"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	char receiveMessage[MAXSTRLEN];
 	char sendMessage[MAXSTRLEN];
@@ -24,20 +24,20 @@ int main()
 	{
 		ServerSocket server;
 		cout << "Starting server..." << endl;
-		//Запускаем сервер
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		server.StartHosting(port);
 		while (true)
 		{
 			cout << "\tWaiting..." << endl;
-			//Получаем данные от клиента
-			//и сохраняем в переменной receiveMessage
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ receiveMessage
 			server.ReceiveData(receiveMessage, MAXSTRLEN);
 			cout << "Received: " << receiveMessage << endl;
 			//// !!!! 
 			
 			if (strcmp(receiveMessage, "Menu") == 0)
 			{
-				string menu = "1. кола(30грн)\n2. картопля фрі(40грн)\n3. морозиво(25грн)\nПриклад замовлення: Номер позиції - кількість\n";
+				string menu = "1. пїЅпїЅпїЅпїЅ(30пїЅпїЅпїЅ)\n2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ(40пїЅпїЅпїЅ)\n3. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(25пїЅпїЅпїЅ)\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n";
 				server.SendDataMessage(menu);
 			} 
 			else if (strstr(receiveMessage, "1") || strstr(receiveMessage, "2") || strstr(receiveMessage, "3"))
@@ -68,19 +68,19 @@ int main()
 				{
 					sum += nums[i + 1] * price[nums[i]-1];
 				}
-				server.SendDataMessage("Сума замовлення: " + to_string(sum) + "грн");
+				server.SendDataMessage("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + to_string(sum) + "пїЅпїЅпїЅ");
 			}
 			else 
 			{
-				//Отправляем данные клиенту
-				cout << "Введите строку для отправки ";
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ";
 				char buff[100];
 				cin.ignore();
 				cin.get(buff, 100);
 
-				server.SendDataMessage(buff); // server.SendDataMessage(string str); переделать !!!
+				server.SendDataMessage(buff); // server.SendDataMessage(string str); пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ !!!
 
-				//Если есть сообщение "end", завершаем работу
+				//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "end", пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 				if (strcmp(receiveMessage, "end") == 0 ||
 					strcmp(sendMessage, "end") == 0)
@@ -93,13 +93,13 @@ int main()
 		cout << "IP address = 127.0.0.1 " << endl;
 			
 		ClientSocket client;
-		//подключаемся к серверу
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		client.ConnectToServer(ipAddress.c_str(), port);
 		while (true)
 		{
-			//отправляем сообщение
-		//Отправляем данные клиенту
-			cout << "Введите строку для отправки ";
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ";
 			char buff[100];
 			cin.ignore();
 			cin.get(buff,100);
@@ -108,14 +108,14 @@ int main()
 
 			cout << "\tWaiting" << endl;
 
-			//получаем ответ
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			client.ReceiveData(receiveMessage, MAXSTRLEN);
 			cout << "Received: " << receiveMessage << endl;
 			if (strcmp(receiveMessage, "end") == 0 ||
 				strcmp(sendMessage, "end") == 0)
 				break;
 		}
-		//Закрываем соединение
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		client.CloseConnection();
 	}
 	else if (nChoice == 3)
